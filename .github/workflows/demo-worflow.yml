@@ -1,0 +1,24 @@
+name: First Github Actions Workflow
+
+on:
+
+    #  workflow_dispatch: Allows manual triggering of the workflow
+ push:
+     branches:
+       - main  # Runs only on commits to main
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Set Up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: Run Hello World Script
+        run: python hello.py
